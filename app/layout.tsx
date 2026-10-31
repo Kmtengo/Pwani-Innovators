@@ -12,7 +12,8 @@ import SiteShell from "../components/SiteShell";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    "https://pwani-innovators.mosesmtengo230495.chatgpt.site",
+    process.env.NEXT_PUBLIC_SITE_URL ||
+      "https://pwani-innovators-production.up.railway.app",
   ),
   title: "Pwani Innovators — Big ideas. Coastal roots.",
   description:

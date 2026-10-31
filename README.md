@@ -1,6 +1,6 @@
 # Pwani Innovators
 
-A coastal holiday technology programme website built with Next.js, React and TypeScript. Static export is deployed through Sites. Fonts and imagery are served locally.
+A coastal holiday technology programme website built with Next.js, React and TypeScript. Railway builds and serves the static export. Fonts and imagery are served locally.
 
 ## Develop
 
@@ -12,6 +12,23 @@ npm run build
 ```
 
 Production output is `out/`. The managed preview accepts its own host/port flags through `scripts/dev.mjs`.
+
+## Railway deployment
+
+- Live site: https://pwani-innovators-production.up.railway.app
+- Project: **Pwani Innovators**, environment: **production**, service: **pwani-innovators**.
+- Source: `Kmtengo/Pwani-Innovators`, branch `main`. Railway's GitHub integration deploys pushes directly; a GitHub Actions deployment workflow is not required.
+- `railway.json` configures Railpack, the production build and the health check. `.node-version` selects Node 24. Railpack serves the Next.js `out/` export with Caddy; `Staticfile` disables the home-page fallback so unknown routes return 404.
+- Railway variables: `PORT=8080`, `RAILPACK_SPA_OUTPUT_DIR=out` and `NEXT_PUBLIC_SITE_URL=https://pwani-innovators-production.up.railway.app`.
+- Typeform uses the public defaults in `.env.example`. Set overrides as Railway variables and redeploy to apply them. `.env.local` stays on your machine.
+
+To deploy the current local checkout manually after `railway login`:
+
+```sh
+railway up --project c11a5c03-f6fa-4ee1-bfa2-5ee281537029 --environment 401f15ac-ff61-4e53-9b76-815f19231959 --service 94154f6c-77f1-4e02-b987-9c8f325638bc --ci
+```
+
+Check that the deployment reaches `SUCCESS` in Railway before considering a release complete. For a custom domain, configure Railway/DNS, update `NEXT_PUBLIC_SITE_URL`, then redeploy.
 
 ## Content and integrations
 
@@ -32,10 +49,10 @@ Populate `programme.director.name` and `programme.director.quote` with the Direc
 
 ## Before the public launch
 
-- Verify the published Typeform?s privacy notice and response destination.
+- Verify the published Typeform's privacy notice and response destination.
 - Supply the Director's approved quote and name.
 - Confirm cohort times, device arrangements, attendance/payment policies and exact venue directions; the current FAQs direct parents to the team for these details.
-- Connect the owned `innovate-pwani.co.ke` domain through hosting/DNS setup. The current deployment uses its Sites URL and remains owner-private.
+- Connect the owned `innovate-pwani.co.ke` domain through Railway/DNS setup. The current deployment uses the public Railway URL above.
 - Confirm permission to publish the supplied learner image and poster.
 
 Phone: 0791 532 391. Instagram: @pwaninnovate. First start: 9 November 2026. Four-hour sessions, Monday–Saturday, during school holidays. Weekly / monthly fees: ages 8?12 KSh 1,000 / 4,000; ages 13?17 KSh 1,200 / 4,800; ages 18+ KSh 1,500 / 6,000. Weekly covers 6 sessions and monthly covers 4 weeks (24 sessions). Calendar-month attendance may vary.

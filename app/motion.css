@@ -1,0 +1,239 @@
+/* Size the composition from the viewport, including the space occupied by navigation. */
+.hero {
+  --hero-header-height: 94px;
+  --hero-photo-height: clamp(450px, calc(100svh - 210px), 610px);
+  --hero-height: min(880px, calc(100svh - var(--hero-header-height)));
+  --hero-free-space: calc(var(--hero-height) - var(--hero-photo-height) - 25px);
+  isolation: isolate;
+  height: var(--hero-height);
+  min-height: calc(var(--hero-photo-height) + 49px);
+  padding-top: clamp(12px, calc(var(--hero-free-space) * .55), 96px);
+  padding-bottom: clamp(12px, calc(var(--hero-free-space) * .45), 68px);
+  grid-template-rows: minmax(0, 1fr);
+}
+.hero-swell {
+  position: absolute;
+  right: calc((min(100vw, 1256px) - 100vw) / 2);
+  bottom: 0;
+  width: 100vw;
+  height: 100%;
+  max-width: none;
+  z-index: -1;
+  pointer-events: none;
+}
+.hero-art {
+  isolation: isolate;
+  width: 100%;
+  max-width: 490px;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  z-index: 1;
+}
+.hero-photo {
+  margin-inline: 12px;
+  height: var(--hero-photo-height);
+  max-height: none;
+  aspect-ratio: auto;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+}
+.hero-photo-surface {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 47% 47% 0 0;
+  background: #e2effa;
+}
+.hero-photo img { object-position: 50% 45%; }
+.hero-orbit { inset-inline: 17px; mask-image: linear-gradient(#000 65%, transparent 94%); }
+.hero-object {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+  filter: drop-shadow(0 12px 12px #173a5a18);
+}
+.hero-object img { max-width: none; height: auto; position: absolute; top: 0; }
+.hero-robot {
+  width: 94%;
+  aspect-ratio: 1.04;
+  left: 3%;
+  bottom: calc(100% - 12px);
+  transform: none;
+  filter: drop-shadow(0 5px 3px #173a5a26);
+}
+.hero-robot img { width: 192.3077%; left: 0; }
+.hero-dhow {
+  --dhow-shift: clamp(0px, calc((100vw - 1256px) / 2 + 16px), 50px);
+  width: 36%;
+  aspect-ratio: .96;
+  right: calc(-24px - var(--dhow-shift));
+  bottom: 21%;
+  transform: translate3d(0, var(--hero-drift, 0px), 0) rotate(3deg);
+}
+.hero-dhow img { width: 208.3333%; right: 0; }
+.hero-keepsake {
+  position: absolute;
+  width: clamp(190px, 19vw, 250px);
+  left: -9%;
+  bottom: -1%;
+  z-index: 4;
+  transform: rotate(-4deg);
+}
+.hero-keepsake .hero-note {
+  position: relative;
+  width: 100%;
+  left: auto;
+  bottom: auto;
+  transform: none;
+  padding: 14px 16px;
+  font-size: 11px;
+  gap: 10px;
+}
+.hero-caption {
+  position: absolute;
+  right: 8%;
+  bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 4;
+}
+.hero-caption .hero-scribble {
+  position: static;
+  display: block;
+  text-shadow: 0 1px 5px #fffaf1, 0 0 12px #fffaf1b3;
+}
+
+/* The continuous circuit travels through section whitespace to content edges. */
+.home-journey { position: relative; isolation: isolate; }
+.scroll-journey {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 4;
+  contain: strict;
+}
+.scroll-journey path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.journey-track { stroke: #548ab8; stroke-width: 1.5; opacity: .16; }
+.journey-ink { stroke: #3987bb; stroke-width: 2; opacity: .65; }
+.journey-node { fill: var(--ivory); stroke: #73a7c8; stroke-width: 1.8; }
+.journey-node.is-active { fill: var(--yellow); stroke: #fffaf1; stroke-width: 3; }
+.journey-signal { fill: #f9cb15; stroke: #fff9e9; stroke-width: 2; }
+.journey-companion { stroke: #82b5d4; stroke-width: 1; opacity: .15; }
+.journey-halo { fill: #f9cb1529; }
+[data-journey] { position: relative; }
+[data-journey]::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1px solid #72b5e0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 5px #9ed7f51a, 0 8px 28px #429bd51a;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .45s ease;
+}
+[data-journey].journey-active::after { opacity: 1; }
+.track-panel::after { border-radius: 16px; }
+.journey-detail::after { inset: 1px; box-shadow: inset 0 0 24px #429bd51a; }
+.collaborate[data-journey]::after { inset: 8px 16px; border-radius: 16px; }
+.cohort-card.featured.journey-active::after { border-color: #f2c400; box-shadow: 0 0 0 5px #f2c40016, 0 8px 28px #f2c40012; }
+.scroll-title {
+  translate: 0 var(--title-offset, 0px);
+  opacity: var(--title-opacity, 1);
+}
+
+/* Swahili wave ribbons resolve into circuits below the footer wordmark. */
+.footer-brand { position: relative; min-width: 0; }
+.footer-flow-art {
+  display: block;
+  width: calc(100% + 140px);
+  max-width: 580px;
+  height: 160px;
+  margin: 12px 0 -25px -35px;
+  pointer-events: none;
+}
+.footer-links, .footer-contact { position: relative; z-index: 1; }
+
+@media (min-width: 851px) and (max-height: 740px) {
+  .hero-dhow { width: 37%; }
+  .hero-keepsake { left: -12%; }
+}
+@media (min-width: 621px) and (max-height: 740px) {
+  .hero h1 { font-size: clamp(48px, 10svh, 74px); margin-bottom: 20px; }
+  .hero-lead { font-size: 16px; line-height: 1.5; margin-bottom: 10px; }
+  .hero-description { font-size: 12px; line-height: 1.7; }
+  .hero-actions { margin-top: 18px; }
+  .hero-location { margin-top: 16px; }
+  .hero-keepsake { width: clamp(160px, 28svh, 210px); }
+  .hero-keepsake .hero-note { font-size: 9px; padding: 10px 12px; }
+}
+@media (min-width: 621px) and (max-width: 850px) {
+  .hero { --hero-header-height: 86px; --hero-photo-height: 460px; }
+  .hero-swell { height: 86%; }
+  .hero-photo { margin-inline: 12px; }
+  .hero-dhow { right: -18px; bottom: 25%; width: 39%; }
+  .hero-keepsake { width: 185px; bottom: -2%; }
+  .hero-keepsake .hero-note { font-size: 9px; padding: 12px; gap: 8px; }
+  .footer-flow-art { width: calc(100% + 60px); height: 135px; margin-left: -15px; }
+}
+@media (max-width: 620px) {
+  .hero {
+    --hero-header-height: 76px;
+    --hero-photo-height: 340px;
+    height: auto;
+    min-height: calc(100svh - var(--hero-header-height));
+    padding-top: 12px;
+    padding-bottom: 28px;
+    gap: 24px;
+    grid-template-rows: auto auto;
+  }
+  .hero h1 { font-size: clamp(42px, 6.8svh, 58px); margin-bottom: 18px; }
+  .hero-swell { width: 150vw; height: calc(var(--hero-photo-height) + 110px); }
+  .hero-art { width: min(300px, 80vw); max-width: none; }
+  .hero-photo { margin-inline: 8px; }
+  .hero-orbit { inset-inline: 7px; }
+  .hero-dhow { width: 36%; right: -8%; bottom: 21%; }
+  .hero-keepsake { width: clamp(120px, 20svh, 168px); left: -5%; bottom: -3px; }
+  .hero-keepsake .hero-note { font-size: 9px; padding: 10px 12px; }
+  .hero-robot { bottom: calc(100% - 8px); }
+  .hero-caption { right: 12%; bottom: 8%; gap: 10px; }
+  .journey-track { opacity: .1; }
+  .journey-ink { opacity: .22; stroke-width: 1.5; }
+  .footer-flow-art { width: 100%; max-width: 430px; height: 100px; margin: 8px 0 0; }
+}
+@media (max-width: 380px) {
+  .hero { --hero-photo-height: 310px; }
+  .hero-art { width: 260px; }
+  .hero-keepsake { width: clamp(120px, 20svh, 152px); left: -3%; }
+  .hero-dhow { right: -6%; }
+}
+/* A compact text block leaves the portrait at full height on shorter phones. */
+@media (max-width: 620px) and (max-height: 740px) {
+  .hero { padding-top: 8px; padding-bottom: 18px; gap: 10px; }
+  .hero h1 { font-size: clamp(27px, 8vw, 36px); margin-bottom: 16px; letter-spacing: -.05em; }
+  .hero h1 em { display: inline; margin-left: .18em; }
+  .headline-underline { width: 46%; left: 49%; bottom: -8px; height: 12px; }
+  .hero-lead { font-size: 14px; line-height: 1.4; margin-bottom: 8px; }
+  .hero-description { font-size: 12px; line-height: 1.55; }
+  .hero-actions { margin-top: 12px; }
+  .hero-location { margin-top: 8px; }
+}
+@media (max-width: 370px) {
+  .track-tabs, .journey-steps { margin-right: -19px; padding-right: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-object { transform: none; }
+  .scroll-title { translate: none; opacity: 1; }
+  .journey-signal { display: none; }
+  .journey-halo { display: none; }
+  [data-journey]::after { transition: none; }
+}

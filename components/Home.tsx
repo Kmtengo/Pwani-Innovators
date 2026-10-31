@@ -729,19 +729,19 @@ export default function Home() {
               <br />
               Smartbrains Academy
             </h3>
-            {programme.director.quote ? (
-              <blockquote>{programme.director.quote}</blockquote>
-            ) : (
-              <p className="testimonial-placeholder">
-                The Director’s perspective on nurturing young innovators.
-                <br />
-                <span>Message coming soon.</span>
-              </p>
-            )}
+            <blockquote>{programme.director.quote}</blockquote>
             <div className="testimonial-person">
-              <span className="school-monogram">SA</span>
+              <img
+                className="testimonial-portrait"
+                src={programme.director.image}
+                alt="Lennox Mtengo"
+                width={64}
+                height={64}
+                loading="lazy"
+              />
               <div>
-                <strong>{programme.director.name || "Director"}</strong>
+                <strong>{programme.director.name}</strong>
+                <small>Director</small>
                 <small>Smartbrains Academy, Mombasa</small>
               </div>
             </div>

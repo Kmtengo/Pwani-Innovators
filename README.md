@@ -45,12 +45,11 @@ Check that the deployment reaches `SUCCESS` in Railway before considering a rele
 
 The contact page embeds the published Typeform using live embed ID `01M69PZJ9HVRWB40R9K5X9XAWK` and the official embed script. It occupies the right column on desktop and stays inline below the contact details on mobile. `NEXT_PUBLIC_TYPEFORM_LIVE_ID` and `NEXT_PUBLIC_TYPEFORM_URL` optionally override the embed ID and direct-form fallback link; see `.env.example` and rebuild after changing them. Both values are public. The previous local enquiry composer has been replaced by Typeform.
 
-Populate `programme.director.name` and `programme.director.quote` with the Director's approved testimonial. Until then, the page displays an honest coming-soon message. No endorsements or partner affiliations have been invented.
+The testimonial features Lennox Mtengo, Director of Smartbrains Academy, with the supplied message and portrait. Edit `programme.director` in `lib/programme.ts` to update the name, quote or image.
 
 ## Before the public launch
 
 - Verify the published Typeform's privacy notice and response destination.
-- Supply the Director's approved quote and name.
 - Confirm cohort times, device arrangements, attendance/payment policies and exact venue directions; the current FAQs direct parents to the team for these details.
 - Connect the owned `innovate-pwani.co.ke` domain through Railway/DNS setup. The current deployment uses the public Railway URL above.
 - Confirm permission to publish the supplied learner image and poster.

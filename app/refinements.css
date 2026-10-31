@@ -1274,18 +1274,11 @@
   line-height: 1.3;
   margin-bottom: 20px;
 }
-.testimonial-placeholder,
 .testimonial-main blockquote {
   font-size: 14px;
   line-height: 1.9;
   color: #6d7e89;
   margin: 0 0 30px;
-}
-.testimonial-placeholder > span {
-  display: inline-block;
-  margin-top: 12px;
-  color: #98a4ad;
-  font-size: 12px;
 }
 .testimonial-person {
   display: flex;
@@ -1294,16 +1287,14 @@
   margin-top: auto;
   text-align: left;
 }
-.school-monogram {
-  height: 41px;
-  width: 41px;
-  display: grid;
-  place-items: center;
+.testimonial-portrait {
+  height: 64px;
+  width: 64px;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center 25%;
   background: #e8eff5;
-  color: #355d7d;
-  font-size: 12px;
   border-radius: 50%;
-  font-weight: 700;
 }
 .testimonial-person strong {
   font-size: 12px;
@@ -2296,7 +2287,6 @@ html {
   .testimonial-main h3 {
     font-size: 21px;
   }
-  .testimonial-placeholder,
   .testimonial-main blockquote {
     font-size: 13px;
   }

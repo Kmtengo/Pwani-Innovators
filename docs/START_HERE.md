@@ -34,7 +34,7 @@ This project uses Next.js static export. The `out/` folder produced by the build
 
 The supplied Typeform live embed is enabled by default in the contact page's right-hand column and stays inline on mobile. To change it, copy `.env.example` to `.env.local` and update `NEXT_PUBLIC_TYPEFORM_LIVE_ID` and `NEXT_PUBLIC_TYPEFORM_URL` (the direct-form fallback link), then restart development or rebuild. Form questions and responses are managed in Typeform.
 
-The Director testimonial remains a placeholder: update `programme.director` in `lib/programme.ts` with the approved name and quote.
+The Director testimonial features Lennox Mtengo of Smartbrains Academy, using the supplied message and `public/images/lennox-mtengo.png` portrait. Update `programme.director` in `lib/programme.ts` to edit it.
 
 For your own domain, update `metadataBase` in `app/layout.tsx` and configure the domain with your hosting provider. The exported source does not require a ChatGPT sign-in; the current hosted Site's access gate belongs to its hosting platform.
 

@@ -7,7 +7,12 @@ export const programme = {
   email: "info@innovate-pwani.co.ke",
   typeformUrl: process.env.NEXT_PUBLIC_TYPEFORM_URL || "https://form.typeform.com/to/S6c3uimj",
   typeformLiveId: process.env.NEXT_PUBLIC_TYPEFORM_LIVE_ID || "01M69PZJ9HVRWB40R9K5X9XAWK",
-  director: { name: "", quote: "" },
+  director: {
+    name: "Lennox Mtengo",
+    image: "/images/lennox-mtengo.png",
+    quote:
+      "The Pwani Innovators tech camp is a highly impactful and rewarding programme that equips young students with essential skills for today's technology-driven world. The team is highly skilled, and I recommend them to nurture your child's innovative spirit and help them develop in-demand 21st-century skills.",
+  },
 };
 
 export const cohorts = [

@@ -18,6 +18,7 @@ Production output is `out/`. The managed preview accepts its own host/port flags
 - Live site: https://pwani-innovators-production.up.railway.app
 - Project: **Pwani Innovators**, environment: **production**, service: **pwani-innovators**.
 - Source: `Kmtengo/Pwani-Innovators`, branch `main`. Railway's GitHub integration deploys pushes directly; a GitHub Actions deployment workflow is not required.
+- Automatic deployments require the [Railway GitHub App](https://github.com/apps/railway-app) to be installed with access to this repository, a project member's connected GitHub account with contributor access, and an enabled `main` deployment trigger. Authorizing GitHub sign-in alone does not install the app. If pushes stop deploying, check these permissions and the service's source settings.
 - `railway.json` configures Railpack, the production build and the health check. `.node-version` selects Node 24. Railpack serves the Next.js `out/` export with Caddy; `Staticfile` disables the home-page fallback so unknown routes return 404.
 - Railway variables: `PORT=8080`, `RAILPACK_SPA_OUTPUT_DIR=out` and `NEXT_PUBLIC_SITE_URL=https://pwani-innovators-production.up.railway.app`.
 - Typeform uses the public defaults in `.env.example`. Set overrides as Railway variables and redeploy to apply them. `.env.local` stays on your machine.
